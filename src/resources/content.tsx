@@ -2,68 +2,43 @@ import type { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } fro
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
-  firstName: "Mykhailo",
-  lastName: "Shumilin",
-  name: "Mykhailo Shumilin",
-  role: "Frontend Developer",
+  firstName: "Rahim",
+  lastName: "Aghazada",
+  name: "Rahim Aghazada",
+  role: "Data & Business Analyst",
   avatar: "/images/avatar.jpg",
-  email: "",
-  location: "Europe/Kyiv", // Expecting the IANA time zone identifier
-  languages: [], // optional: Leave the array empty if you don't want to display languages
-  locale: "uk", // BCP 47 language tag for the HTML lang attribute
+  email: "raxheem1@gmail.com",
+  location: "Asia/Baku",
+  languages: ["English", "Russian", "Azerbaijani"],
+  locale: "ru",
 };
 
 const newsletter: Newsletter = {
   display: false,
-  title: <>Підпишіться на розсилку {person.firstName}</>,
-  description: <>Мої новини про веб-розробку та нові проекти</>,
+  title: <>Подпишитесь на рассылку {person.firstName}</>,
+  description: <>Мои новости</>,
 };
 
 const social: Social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
-  // Set essentials: true for links you want to show on the about page
-  {
-    name: "GitHub",
-    icon: "github",
-    link: "https://github.com/Mishkanchik",
-    essential: true,
-  },
-  {
-    name: "Telegram",
-    icon: "telegram",
-    link: "https://t.me/mishkanchik",
-    essential: true,
-  },
-  {
-    name: "Instagram",
-    icon: "instagram",
-    link: "https://www.instagram.com/___mishkanchik",
-    essential: true,
-  },
-  {
-    name: "Steam",
-    icon: "steam",
-    link: "https://steamcommunity.com/profiles/76561199496413147/",
-    essential: false,
-  },
+  { name: "Telegram", icon: "telegram", link: "https://t.me/raxheem1", essential: true },
+  { name: "Email", icon: "email", link: "mailto:raxheem1@gmail.com", essential: true },
 ];
 
 const home: Home = {
   path: "/",
   image: "/images/og/home.jpg",
-  label: "Головна",
-  title: `${person.name} – Портфоліо`,
-  description: `Портфоліо Frontend розробника ${person.name}`,
-  headline: <>Створюю швидкі, сучасні та візуально довершені веб-інтерфейси</>,
+  label: "Главная",
+  title: `${person.name} – Аналитика данных`,
+  description: `Портфолио аналитика ${person.name}`,
+  headline: <>Преобразую данные в инсайты и эффективные бизнес-решения</>,
   featured: {
     display: false,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
+        <strong className="ml-4">Featured</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
-          Featured work
+          work
         </Text>
       </Row>
     ),
@@ -71,123 +46,139 @@ const home: Home = {
   },
   subline: (
     <>
-      Я {person.firstName}, {person.role.toLowerCase()} із Цуманя, Україна. Створюю сучасні
-      веб-додатки та перетворюю складні ідеї на чистий, якісний та привабливий код.
+      Я {person.firstName}, {person.role}. Специализируюсь на клиентской аналитике, бизнес аналитике
+      данных (BI) и оценке экономической эффективности.
     </>
   ),
 };
 
 const about: About = {
   path: "/about",
-  label: "Про мене",
-  title: `Про мене – ${person.name}`,
-  description: `Познайомтеся з ${person.name}, ${person.role} із ${person.location}`,
-  tableOfContent: {
-    display: true,
-    subItems: false,
-  },
-  avatar: {
-    display: true,
-  },
-  calendar: {
-    display: false,
-    link: "",
-  },
+  label: "Обо мне",
+  title: `Обо мне – ${person.name}`,
+  description: `Узнайте больше о ${person.name}, аналитике данных из ${person.location}`,
+  tableOfContent: { display: true, subItems: false },
+  avatar: { display: true },
+  calendar: { display: false, link: "" },
   intro: {
     display: true,
-    title: "Вступ",
+    title: "Введение",
     description: (
       <>
-        Старанний розробник, орієнтований на створення високоякісних, продуктивних та естетично
-        довершених інтерфейсів з увагою до найменших деталей. Завжди прагну вдосконалювати свої
-        навички та створювати веб-продукти, якими приємно користуватися.
+        Я аналитик с высшим образованием и практическим опытом в продажах и обслуживании клиентов.
+        Работал кассиром в Gloria Jean's в условиях высокой клиентской нагрузки, часто выполняя
+        функции менеджера, а в компании Infocus взаимодействовал с премиальными клиентами.
+        <br />
+        <br />
+        Этот опыт помог мне глубоко понять клиентов, бизнес-процессы и влияние операционных решений
+        на показатели и отчётность. В магистратуре я специализировался на бизнес-аналитике данных и
+        исследовал тему анализа и оптимизации клиентских данных в долгосрочном бизнесе. Сейчас
+        продолжаю обучение в докторантуре по экономике.
       </>
     ),
   },
   work: {
-    display: false, // Hide placeholder experience
-    title: "Досвід роботи",
-    experiences: [],
+    display: true,
+    title: "Опыт работы",
+    experiences: [
+      {
+        company: "Gloria Jean's",
+        timeframe: "Прошлый опыт",
+        role: "Кассир / И.о. менеджера",
+        achievements: [
+          "Работа в условиях высокой клиентской нагрузки.",
+          "Выполнение функций менеджера, управление операционными процессами.",
+        ],
+        images: [],
+      },
+      {
+        company: "Infocus",
+        timeframe: "Прошлый опыт",
+        role: "Специалист по работе с клиентами",
+        achievements: [
+          "Взаимодействие с премиальными клиентами.",
+          "Глубокое понимание бизнес-процессов и влияния операционных решений на отчётность сервиса.",
+        ],
+        images: [],
+      },
+    ],
   },
   studies: {
     display: true,
-    title: "Освіта",
+    title: "Образование",
     institutions: [
       {
-        name: "ITSTEP Academy",
-        description: <>Курси комп'ютерної академії, вивчення програмування та веб-розробки.</>,
+        name: "Kozybaev University",
+        description: <>Докторантура по специальности «Экономика» (по настоящее время).</>,
       },
       {
-        name: "SKILLUP",
-        description: (
-          <>Професійні курси підготовки ІТ-спеціалістів, поглиблене вивчення Frontend.</>
-        ),
+        name: "UNEC Azerbaijan",
+        description: <>Управление бизнесом, специализация «Аналитика данных».</>,
       },
+      { name: "WayUp Academy", description: <>Web and UX/UI design.</> },
     ],
   },
   technical: {
     display: true,
-    title: "Технічні навички",
+    title: "Технические навыки",
     skills: [
       {
-        title: "Frontend Core",
+        title: "Data Analysis",
         description: (
           <>
-            Створюю адаптивну та сучасну верстку. Маю досвід роботи з HTML/CSS понад 4.5 роки, а
-            також Tailwind CSS (1 рік), SASS / SCSS та Bootstrap (по 6 місяців).
+            Преобразую сырые данные в структурированный аналитический слой: очищаю, обрабатываю,
+            рассчитываю и формирую датасет для моделей. Строю воспроизводимые пайплайны подготовки
+            данных для последующего моделирования.
           </>
         ),
         tags: [
-          { name: "HTML/CSS (4.5 р.)", icon: "globe" },
-          { name: "Tailwind CSS (1 р.)", icon: "globe" },
-          { name: "SASS / SCSS (6 міс.)", icon: "globe" },
-          { name: "Bootstrap (6 міс.)", icon: "globe" },
+          { name: "SQL", icon: "database" },
+          { name: "Python", icon: "node" },
         ],
       },
       {
-        title: "JavaScript & React Ecosystem",
+        title: "Customer Analytics",
         description: (
           <>
-            Розробляю інтерактивні веб-додатки. Досвід роботи з React.js та JavaScript (ES6+)
-            становить 1 рік, TypeScript та RCA — 6 місяців. Для збірки проектів використовую Vite
-            (1.5 роки).
+            Строю клиентскую аналитику на основе транзакционных данных: рассчитываю скоринг, провожу
+            сегментацию и моделирую риск оттока. Использую результаты для выделения прибыльных
+            сегментов, оценки риска ухода, таргетирования маркетинговых активностей и другое.
           </>
         ),
         tags: [
-          { name: "React.js (1 р.)", icon: "nextjs" },
-          { name: "JavaScript (1 р.)", icon: "javascript" },
-          { name: "TypeScript (6 міс.)", icon: "javascript" },
-          { name: "Vite (1.5 р.)", icon: "globe" },
-          { name: "RCA (6 міс.)", icon: "globe" },
+          { name: "RFM", icon: "chart" },
+          { name: "K-Means", icon: "chart" },
+          { name: "CLV", icon: "chart" },
+          { name: "Churn", icon: "chart" },
         ],
       },
       {
-        title: "Backend, Bots & Automation",
+        title: "Business Intelligence",
         description: (
           <>
-            Створюю Telegram ботів (досвід 6 місяців) на базі Python (6 місяців). Працюю з REST/JSON
-            (1 рік) та безголовою CMS Strapi (6 місяців).
+            Разрабатываю отчётность и дашборды для мониторинга продаж, клиентских сегментов и
+            эффективности маркетинга. Перевожу результаты анализа в понятные KPI и визуальные
+            инсайты для поддержки управленческих решений.
           </>
         ),
         tags: [
-          { name: "Telegram bots (6 міс.)", icon: "telegram" },
-          { name: "Python (6 міс.)", icon: "globe" },
-          { name: "Strapi (6 міс.)", icon: "globe" },
-          { name: "REST/JSON (1 р.)", icon: "globe" },
+          { name: "Tableau", icon: "layout" },
+          { name: "Excel", icon: "layout" },
+          { name: "KPI Dashboards", icon: "dashboard" },
         ],
       },
       {
-        title: "Git, GitHub & Design Tools",
+        title: "Economic Analysis",
         description: (
           <>
-            Використовую Git (2 роки) та GitHub (3 роки) для контролю версій. Маю базові навички
-            роботи з Figma та штучним інтелектом (AI) для прискорення веб-розробки.
+            Оцениваю экономическую эффективность маркетинговых решений: моделирую влияние бюджета,
+            скидок на прибыль по клиентским сегментам и тд. Интегрирую статистику, бизнес‑аналитику
+            и ML‑прогнозы в задачи оптимизации расходов и доходности.
           </>
         ),
         tags: [
-          { name: "GitHub (3 р.)", icon: "github" },
-          { name: "Git (2 р.)", icon: "github" },
-          { name: "Figma & AI (6 міс.)", icon: "figma" },
+          { name: "Statistics", icon: "chart" },
+          { name: "Risk Management", icon: "shield" },
         ],
       },
     ],
@@ -197,64 +188,21 @@ const about: About = {
 const blog: Blog = {
   path: "/blog",
   label: "Блог",
-  title: "Мої Подорожі",
-  description: `Світлини з подорожей від ${person.name}`,
+  title: "Мои Заметки",
+  description: `Статьи и материалы от ${person.name}`,
 };
-
 const work: Work = {
   path: "/work",
-  label: "Роботи",
-  title: `Проекти – ${person.name}`,
-  description: `Розроблені проекти та веб-додатки від ${person.name}`,
+  label: "Работы",
+  title: `Проекты – ${person.name}`,
+  description: `Аналитические исследования и проекты от ${person.name}`,
 };
-
 const gallery: Gallery = {
   path: "/gallery",
   label: "Галерея",
   title: `Галерея – ${person.name}`,
-  description: `Світлини та візуальні матеріали ${person.name}`,
-  images: [
-    {
-      src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-  ],
+  description: `Визуальные материалы от ${person.name}`,
+  images: [],
 };
 
 export { person, social, newsletter, home, about, blog, work, gallery };
