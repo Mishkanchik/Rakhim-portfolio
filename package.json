@@ -5,9 +5,9 @@
     "dev": "next dev",
     "export": "next export",
     "build": "next build",
-    "biome-write": "npx @biomejs/biome format --write .",
+    "biome-write": "npx @biomejs/biome check --write --unsafe .",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "npx @biomejs/biome check ."
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",

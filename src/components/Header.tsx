@@ -1,11 +1,11 @@
 "use client";
 
+import { about, display, person, routes } from "@/resources";
+import { Fade, Flex, Icon, Line, Row, SmartLink, ToggleButton } from "@once-ui-system/core";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Fade, Flex, Line, Row, ToggleButton, Icon, SmartLink } from "@once-ui-system/core";
-import { routes, display, person, about } from "@/resources";
-import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Header.module.scss";
+import { ThemeToggle } from "./ThemeToggle";
 
 type TimeDisplayProps = {
   timeZone: string;

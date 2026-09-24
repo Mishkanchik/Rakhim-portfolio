@@ -1,16 +1,16 @@
+import { about, baseURL, home, person } from "@/resources";
 import {
-  Heading,
-  Text,
-  Button,
   Avatar,
-  RevealFx,
-  Column,
   Badge,
+  Button,
+  Column,
+  Heading,
+  Meta,
+  RevealFx,
   Row,
   Schema,
-  Meta,
+  Text,
 } from "@once-ui-system/core";
-import { home, about, person, baseURL } from "@/resources";
 
 export async function generateMetadata() {
   return Meta.generate({

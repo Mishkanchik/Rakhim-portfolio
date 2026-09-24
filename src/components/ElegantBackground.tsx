@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import type React from "react";
+import { useEffect, useState } from "react";
 import styles from "./ElegantBackground.module.scss";
 
 interface ElegantShapeProps {
@@ -47,7 +48,7 @@ const ElegantShape: React.FC<ElegantShapeProps> = ({
         }}
         transition={{
           duration: 12,
-          repeat: Infinity,
+          repeat: Number.POSITIVE_INFINITY,
           ease: "easeInOut",
         }}
         style={{

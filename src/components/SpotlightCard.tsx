@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import { useRef, type MouseEvent } from "react"
+import { type MouseEvent, useRef } from "react";
 import styles from "./SpotlightCard.module.scss";
 
 interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -41,7 +41,9 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
       className={combinedClassName}
       style={{
         ...props.style,
-        ...(customGlowColor ? ({ "--custom-glow-color": customGlowColor } as React.CSSProperties) : {}),
+        ...(customGlowColor
+          ? ({ "--custom-glow-color": customGlowColor } as React.CSSProperties)
+          : {}),
       }}
       {...props}
     >

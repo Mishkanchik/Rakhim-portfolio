@@ -1,6 +1,7 @@
-export function formatDate(date: string, includeRelative = false) {
+export function formatDate(dateStr: string, includeRelative = false) {
   const currentDate = new Date();
 
+  let date = dateStr;
   if (!date.includes("T")) {
     date = `${date}T00:00:00`;
   }

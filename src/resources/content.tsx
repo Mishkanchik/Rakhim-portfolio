@@ -1,10 +1,10 @@
-import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import type { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
   firstName: "Mykhailo",
   lastName: "Shumilin",
-  name: `Mykhailo Shumilin`,
+  name: "Mykhailo Shumilin",
   role: "Frontend Developer",
   avatar: "/images/avatar.jpg",
   email: "",
@@ -71,8 +71,8 @@ const home: Home = {
   },
   subline: (
     <>
-      Я {person.firstName}, {person.role.toLowerCase()} із Цуманя, Україна.
-      Створюю сучасні веб-додатки та перетворюю складні ідеї на чистий, якісний та привабливий код.
+      Я {person.firstName}, {person.role.toLowerCase()} із Цуманя, Україна. Створюю сучасні
+      веб-додатки та перетворюю складні ідеї на чистий, якісний та привабливий код.
     </>
   ),
 };
@@ -98,7 +98,9 @@ const about: About = {
     title: "Вступ",
     description: (
       <>
-        Старанний розробник, орієнтований на створення високоякісних, продуктивних та естетично довершених інтерфейсів з увагою до найменших деталей. Завжди прагну вдосконалювати свої навички та створювати веб-продукти, якими приємно користуватися.
+        Старанний розробник, орієнтований на створення високоякісних, продуктивних та естетично
+        довершених інтерфейсів з увагою до найменших деталей. Завжди прагну вдосконалювати свої
+        навички та створювати веб-продукти, якими приємно користуватися.
       </>
     ),
   },
@@ -117,7 +119,9 @@ const about: About = {
       },
       {
         name: "SKILLUP",
-        description: <>Професійні курси підготовки ІТ-спеціалістів, поглиблене вивчення Frontend.</>,
+        description: (
+          <>Професійні курси підготовки ІТ-спеціалістів, поглиблене вивчення Frontend.</>
+        ),
       },
     ],
   },
@@ -128,7 +132,10 @@ const about: About = {
       {
         title: "Frontend Core",
         description: (
-          <>Створюю адаптивну та сучасну верстку. Маю досвід роботи з HTML/CSS понад 4.5 роки, а також Tailwind CSS (1 рік), SASS / SCSS та Bootstrap (по 6 місяців).</>
+          <>
+            Створюю адаптивну та сучасну верстку. Маю досвід роботи з HTML/CSS понад 4.5 роки, а
+            також Tailwind CSS (1 рік), SASS / SCSS та Bootstrap (по 6 місяців).
+          </>
         ),
         tags: [
           { name: "HTML/CSS (4.5 р.)", icon: "globe" },
@@ -140,7 +147,11 @@ const about: About = {
       {
         title: "JavaScript & React Ecosystem",
         description: (
-          <>Розробляю інтерактивні веб-додатки. Досвід роботи з React.js та JavaScript (ES6+) становить 1 рік, TypeScript та RCA — 6 місяців. Для збірки проектів використовую Vite (1.5 роки).</>
+          <>
+            Розробляю інтерактивні веб-додатки. Досвід роботи з React.js та JavaScript (ES6+)
+            становить 1 рік, TypeScript та RCA — 6 місяців. Для збірки проектів використовую Vite
+            (1.5 роки).
+          </>
         ),
         tags: [
           { name: "React.js (1 р.)", icon: "nextjs" },
@@ -153,7 +164,10 @@ const about: About = {
       {
         title: "Backend, Bots & Automation",
         description: (
-          <>Створюю Telegram ботів (досвід 6 місяців) на базі Python (6 місяців). Працюю з REST/JSON (1 рік) та безголовою CMS Strapi (6 місяців).</>
+          <>
+            Створюю Telegram ботів (досвід 6 місяців) на базі Python (6 місяців). Працюю з REST/JSON
+            (1 рік) та безголовою CMS Strapi (6 місяців).
+          </>
         ),
         tags: [
           { name: "Telegram bots (6 міс.)", icon: "telegram" },
@@ -165,7 +179,10 @@ const about: About = {
       {
         title: "Git, GitHub & Design Tools",
         description: (
-          <>Використовую Git (2 роки) та GitHub (3 роки) для контролю версій. Маю базові навички роботи з Figma та штучним інтелектом (AI) для прискорення веб-розробки.</>
+          <>
+            Використовую Git (2 роки) та GitHub (3 роки) для контролю версій. Маю базові навички
+            роботи з Figma та штучним інтелектом (AI) для прискорення веб-розробки.
+          </>
         ),
         tags: [
           { name: "GitHub (3 р.)", icon: "github" },
@@ -180,8 +197,8 @@ const about: About = {
 const blog: Blog = {
   path: "/blog",
   label: "Блог",
-  title: "Моя Музика & Подорожі",
-  description: `Авторська музика та світлини з подорожей від ${person.name}`,
+  title: "Мої Подорожі",
+  description: `Світлини з подорожей від ${person.name}`,
 };
 
 const work: Work = {

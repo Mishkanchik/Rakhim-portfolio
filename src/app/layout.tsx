@@ -4,17 +4,17 @@ import "@/resources/custom.css";
 
 import classNames from "classnames";
 
+import { ElegantBackground, Footer, Header, Providers, RouteGuard } from "@/components";
+import { baseURL, dataStyle, effects, fonts, home, person, style } from "@/resources";
 import {
   Background,
   Column,
   Flex,
   Meta,
-  opacity,
   RevealFx,
-  SpacingToken,
+  type SpacingToken,
+  type opacity,
 } from "@once-ui-system/core";
-import { Footer, Header, RouteGuard, Providers, ElegantBackground } from "@/components";
-import { baseURL, effects, fonts, style, dataStyle, home, person } from "@/resources";
 
 export async function generateMetadata() {
   return Meta.generate({
