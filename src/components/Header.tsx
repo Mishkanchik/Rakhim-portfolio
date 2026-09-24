@@ -4,8 +4,8 @@ import { about, display, person, routes } from "@/resources";
 import { Fade, Flex, Icon, Line, Row, SmartLink, ToggleButton } from "@once-ui-system/core";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useLanguage } from "../context/LanguageContext";
 import styles from "./Header.module.scss";
-import { ThemeToggle } from "./ThemeToggle";
 
 type TimeDisplayProps = {
   timeZone: string;
@@ -40,6 +40,7 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({ timeZone, locale = "en-GB" })
 
 export const Header = () => {
   const pathname = usePathname() ?? "";
+  const { language: lang, setLanguage: setLang } = useLanguage();
 
   return (
     <>
@@ -83,43 +84,30 @@ export const Header = () => {
             style={{ position: "relative" }}
           >
             <Row gap="4" vertical="center" textVariant="body-default-s" suppressHydrationWarning>
-              {routes["/"] && (
-                <ToggleButton prefixIcon="home" href="/" selected={pathname === "/"} />
-              )}
-
-              {/* About page link */}
-              {routes["/about"] && (
-                <>
-                  <Line background="neutral-alpha-medium" vert maxHeight="24" />
-                  <SmartLink href="/about" style={{ textDecoration: "none" }}>
-                    <Row
-                      gap="8"
-                      paddingY="8"
-                      paddingX="12"
-                      vertical="center"
-                      radius="m"
-                      style={{
-                        position: "relative",
-                        zIndex: 3,
-                        cursor: "pointer",
-                        color: pathname.startsWith("/about")
+              {/* Language Switcher */}
+              <Row gap="4" vertical="center">
+                {(["ru", "en", "az"] as const).map((l) => (
+                  <button
+                    key={l}
+                    onClick={() => setLang(l)}
+                    style={{
+                      background: lang === l ? "var(--neutral-alpha-medium)" : "transparent",
+                      border: "none",
+                      cursor: "pointer",
+                      padding: "8px 12px",
+                      borderRadius: "var(--radius-m)",
+                      color:
+                        lang === l
                           ? "var(--neutral-on-background-strong)"
                           : "var(--neutral-on-background-weak)",
-                      }}
-                    >
-                      <Icon name="person" size="s" />
-                      <span className={styles.tabLabel}>{about.label}</span>
-                    </Row>
-                  </SmartLink>
-                </>
-              )}
-
-              {display.themeSwitcher && (
-                <>
-                  <Line background="neutral-alpha-medium" vert maxHeight="24" />
-                  <ThemeToggle />
-                </>
-              )}
+                      fontWeight: lang === l ? 600 : 400,
+                      transition: "all 0.2s ease-in-out",
+                    }}
+                  >
+                    {l.toUpperCase()}
+                  </button>
+                ))}
+              </Row>
             </Row>
           </Row>
         </Row>
