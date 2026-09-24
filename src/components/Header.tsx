@@ -1,0 +1,142 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { Fade, Flex, Line, Row, ToggleButton, Icon, SmartLink } from "@once-ui-system/core";
+import { routes, display, person, about } from "@/resources";
+import { ThemeToggle } from "./ThemeToggle";
+import styles from "./Header.module.scss";
+
+type TimeDisplayProps = {
+  timeZone: string;
+  locale?: string;
+};
+
+const TimeDisplay: React.FC<TimeDisplayProps> = ({ timeZone, locale = "en-GB" }) => {
+  const [currentTime, setCurrentTime] = useState("");
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const options: Intl.DateTimeFormatOptions = {
+        timeZone,
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false,
+      };
+      const timeString = new Intl.DateTimeFormat(locale, options).format(now);
+      setCurrentTime(timeString);
+    };
+
+    updateTime();
+    const intervalId = setInterval(updateTime, 1000);
+
+    return () => clearInterval(intervalId);
+  }, [timeZone, locale]);
+
+  return <>{currentTime}</>;
+};
+
+export const Header = () => {
+  const pathname = usePathname() ?? "";
+
+  return (
+    <>
+      <Fade s={{ hide: true }} fillWidth position="fixed" height="80" zIndex={9} />
+      <Fade
+        hide
+        s={{ hide: false }}
+        fillWidth
+        position="fixed"
+        bottom="0"
+        to="top"
+        height="80"
+        zIndex={9}
+      />
+      <Row
+        fitHeight
+        className={styles.position}
+        position="sticky"
+        as="header"
+        zIndex={9}
+        fillWidth
+        padding="8"
+        horizontal="center"
+        data-border="rounded"
+        s={{
+          position: "fixed",
+        }}
+      >
+        <Row paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
+          {display.location && <Row s={{ hide: true }}>{person.location}</Row>}
+        </Row>
+        <Row fillWidth horizontal="center">
+          <Row
+            background="page"
+            border="neutral-alpha-weak"
+            radius="m-4"
+            shadow="l"
+            padding="4"
+            horizontal="center"
+            zIndex={1}
+            style={{ position: "relative" }}
+          >
+            <Row gap="4" vertical="center" textVariant="body-default-s" suppressHydrationWarning>
+              {routes["/"] && (
+                <ToggleButton prefixIcon="home" href="/" selected={pathname === "/"} />
+              )}
+              <Line background="neutral-alpha-medium" vert maxHeight="24" />
+
+              {/* About page link */}
+              {routes["/about"] && (
+                <SmartLink href="/about" style={{ textDecoration: "none" }}>
+                  <Row
+                    gap="8"
+                    paddingY="8"
+                    paddingX="12"
+                    vertical="center"
+                    radius="m"
+                    style={{
+                      position: "relative",
+                      zIndex: 3,
+                      cursor: "pointer",
+                      color: pathname.startsWith("/about")
+                        ? "var(--neutral-on-background-strong)"
+                        : "var(--neutral-on-background-weak)",
+                    }}
+                  >
+                    <Icon name="person" size="s" />
+                    <span className={styles.tabLabel}>{about.label}</span>
+                  </Row>
+                </SmartLink>
+              )}
+
+              {display.themeSwitcher && (
+                <>
+                  <Line background="neutral-alpha-medium" vert maxHeight="24" />
+                  <ThemeToggle />
+                </>
+              )}
+            </Row>
+          </Row>
+        </Row>
+        <Flex fillWidth horizontal="end" vertical="center">
+          <Flex
+            paddingRight="12"
+            horizontal="end"
+            vertical="center"
+            textVariant="body-default-s"
+            gap="20"
+          >
+            <Flex s={{ hide: true }}>
+              {display.time && <TimeDisplay timeZone={person.location} />}
+            </Flex>
+          </Flex>
+        </Flex>
+      </Row>
+    </>
+  );
+};
+
+export default TimeDisplay;

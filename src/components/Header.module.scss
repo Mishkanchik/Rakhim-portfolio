@@ -1,0 +1,69 @@
+@use "./breakpoints.scss" as breakpoints;
+
+.mask {
+    pointer-events: none;
+    backdrop-filter: blur(0.5rem);
+    background: linear-gradient(to bottom, var(--page-background), var(--static-transparent));
+    mask-image: linear-gradient(rgba(0,0,0) 25%, rgba(0, 0, 0, 0) 100%);
+    mask-size: 100% 100%;
+}
+
+.tabsContainer {
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 4px;
+}
+
+.tabWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hoverBubble {
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    background: var(--neutral-alpha-weak);
+    z-index: 1;
+}
+
+.activeBubble {
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    background: rgba(34, 197, 94, 0.12); // Neon Green semi-transparent active background
+    border: 1px solid rgba(34, 197, 94, 0.25);
+    z-index: 1;
+}
+
+.tabLabel {
+    display: inline;
+    user-select: none;
+    font-weight: 500;
+}
+
+:global([data-theme="light"]) {
+    .activeBubble {
+        background: rgba(16, 185, 129, 0.12);
+        border: 1px solid rgba(16, 185, 129, 0.25);
+    }
+}
+
+@media (max-width: breakpoints.$s) {
+    .position {
+        top: auto;
+        bottom: var(--static-space-24);
+    }
+
+    .mask {
+        transform: rotate(180deg);
+        bottom: 0;
+    }
+
+    .tabLabel {
+        display: none; // Hide labels on mobile (render icon only)
+    }
+}

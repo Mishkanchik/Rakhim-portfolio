@@ -1,0 +1,136 @@
+@use "./breakpoints.scss" as breakpoints;
+
+.elegantBackground {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  background: #030303; // pitch dark base matching kokonut UI
+  transition: background-color 0.8s ease;
+}
+
+.radialGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(34, 197, 94, 0.05) 0%, transparent 80%);
+  z-index: 1;
+}
+
+.shapesWrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.shapeWrapper {
+  position: absolute;
+}
+
+.shapeContainer {
+  position: relative;
+}
+
+.shapeBody {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  backdrop-filter: blur(4px);
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  transition: border-color 0.8s ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.12), transparent 70%);
+  }
+}
+
+// Positions matching Kokonut UI layout guidelines
+.topLeft {
+  left: -8%;
+  top: 12%;
+
+  @media (max-width: breakpoints.$m) {
+    left: -15%;
+    top: 8%;
+  }
+}
+
+.bottomRight {
+  right: -5%;
+  top: 65%;
+
+  @media (max-width: breakpoints.$m) {
+    right: -10%;
+    top: 70%;
+  }
+}
+
+.bottomLeft {
+  left: 3%;
+  bottom: 8%;
+
+  @media (max-width: breakpoints.$m) {
+    left: -5%;
+    bottom: 5%;
+  }
+}
+
+.topRight {
+  right: 12%;
+  top: 8%;
+
+  @media (max-width: breakpoints.$m) {
+    right: 5%;
+    top: 5%;
+  }
+}
+
+.topMid {
+  left: 18%;
+  top: 4%;
+
+  @media (max-width: breakpoints.$m) {
+    left: 10%;
+    top: 2%;
+  }
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, #030303 0%, transparent 20%, transparent 80%, #030303 100%);
+  z-index: 3;
+  pointer-events: none;
+}
+
+// Light theme overrides
+:global([data-theme="light"]) {
+  .elegantBackground {
+    background: #f9fafb;
+  }
+
+  .radialGlow {
+    background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.06) 0%, transparent 80%);
+  }
+
+  .shapeBody {
+    border: 2px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+
+    &::after {
+      background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.05), transparent 70%);
+    }
+  }
+
+  .vignette {
+    background: linear-gradient(to bottom, #f9fafb 0%, transparent 20%, transparent 80%, #f9fafb 100%);
+  }
+}
