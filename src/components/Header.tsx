@@ -86,30 +86,32 @@ export const Header = () => {
               {routes["/"] && (
                 <ToggleButton prefixIcon="home" href="/" selected={pathname === "/"} />
               )}
-              <Line background="neutral-alpha-medium" vert maxHeight="24" />
 
               {/* About page link */}
               {routes["/about"] && (
-                <SmartLink href="/about" style={{ textDecoration: "none" }}>
-                  <Row
-                    gap="8"
-                    paddingY="8"
-                    paddingX="12"
-                    vertical="center"
-                    radius="m"
-                    style={{
-                      position: "relative",
-                      zIndex: 3,
-                      cursor: "pointer",
-                      color: pathname.startsWith("/about")
-                        ? "var(--neutral-on-background-strong)"
-                        : "var(--neutral-on-background-weak)",
-                    }}
-                  >
-                    <Icon name="person" size="s" />
-                    <span className={styles.tabLabel}>{about.label}</span>
-                  </Row>
-                </SmartLink>
+                <>
+                  <Line background="neutral-alpha-medium" vert maxHeight="24" />
+                  <SmartLink href="/about" style={{ textDecoration: "none" }}>
+                    <Row
+                      gap="8"
+                      paddingY="8"
+                      paddingX="12"
+                      vertical="center"
+                      radius="m"
+                      style={{
+                        position: "relative",
+                        zIndex: 3,
+                        cursor: "pointer",
+                        color: pathname.startsWith("/about")
+                          ? "var(--neutral-on-background-strong)"
+                          : "var(--neutral-on-background-weak)",
+                      }}
+                    >
+                      <Icon name="person" size="s" />
+                      <span className={styles.tabLabel}>{about.label}</span>
+                    </Row>
+                  </SmartLink>
+                </>
               )}
 
               {display.themeSwitcher && (
