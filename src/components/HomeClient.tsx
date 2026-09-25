@@ -200,7 +200,7 @@ export function HomeClient() {
             </Column>
           )}
 
-          {about.work.display && (
+          /* {about.work.display && (
             <>
               <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m">
                 {about.work.title}
@@ -257,7 +257,7 @@ export function HomeClient() {
                 ))}
               </Column>
             </>
-          )}
+          )} */
 
           {about.studies.display && (
             <>
